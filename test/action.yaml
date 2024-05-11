@@ -22,7 +22,8 @@ runs:
       echo "PATH_TO_ROOT=${{ github.action_path }}/.." >> $GITHUB_ENV
     shell: bash
   - name: execute commands
-    run: bash PATH_TO_ROOT/script/script.sh
+    run: |
+      bash ${{ github.action_path }}/../script/script.sh
     shell: bash
     env:
       AWS_ECR: ${{ inputs.ecr }}
