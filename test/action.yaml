@@ -21,7 +21,7 @@ runs:
     id: vars
     uses: remorses/bump-version@js
     with:
-      version_file: ./apps/${{ inputs.work_dir}}/version
+      version_file: ${{ inputs.work_dir}}/version
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
   - name: execute commands
