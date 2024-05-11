@@ -23,7 +23,8 @@ runs:
     id: vars
     uses: remorses/bump-version@js
     with:
-      version_file: ${{ inputs.work_dir}}/version
+      version_file: ./apps/${{ inputs.work_dir}}/version
+      prefix: ${{ inputs.work_dir}}
     env:
       GITHUB_TOKEN: ${{ inputs.token }}  
   - name: execute commands
