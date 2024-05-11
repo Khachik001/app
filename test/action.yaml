@@ -37,12 +37,3 @@ runs:
 
 
 
-
-
-
-
-
-  IMAGE=$AWS_ECR/$app
-  aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ECR
-  docker build -t $IMAGE:1.0.$BITBUCKET_BUILD_NUMBER -f ${BITBUCKET_CLONE_DIR}/apps/$app/Dockerfile .
-  docker push $IMAGE:1.0.$BITBUCKET_BUILD_NUMBER
