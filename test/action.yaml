@@ -17,10 +17,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: set action env vars
-    run: |
-      echo "PATH_TO_ROOT=${{ github.action_path }}/.." >> $GITHUB_ENV
-    shell: bash
   - name: execute commands
     run: |
       bash ${{ github.action_path }}/../script/script.sh
