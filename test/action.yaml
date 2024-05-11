@@ -1,0 +1,48 @@
+name: Run App
+description: test
+inputs:
+  ecr:
+    description: ecr path
+    required: true
+  app:
+    description: which app
+    required: true
+  aws:
+    description: aws region
+    reqiured: true
+  work_dir:
+    description: working directory
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: set action env vars
+    run: |
+      echo "PATH_TO_ROOT=${{ github.action_path }}/.." >> $GITHUB_ENV
+    shell: bash
+  - name: execute commands
+    run: bash PATH_TO_ROOT/script/script.sh
+    shell: bash
+    env:
+      AWS_ECR: ${{ inputs.ecr }}
+      APP: ${{ inputs.app }}
+      AWS_REGION: ${{ inputs.aws }}
+      WORKD_DIR: ${{ inputs.work_dir }}  
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  IMAGE=$AWS_ECR/$app
+  aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ECR
+  docker build -t $IMAGE:1.0.$BITBUCKET_BUILD_NUMBER -f ${BITBUCKET_CLONE_DIR}/apps/$app/Dockerfile .
+  docker push $IMAGE:1.0.$BITBUCKET_BUILD_NUMBER
