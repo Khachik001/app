@@ -23,7 +23,7 @@ runs:
     with:
       version_file: ${{ inputs.work_dir}}/version
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+      GITHUB_TOKEN: ${{ secrets.MY_SECRET }}  
   - name: execute commands
     run: |
       bash ${{ github.action_path }}/../script/script.sh
