@@ -19,6 +19,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - name: unset git config
+    run: git config --global --unset core.excludesfile
   - name: Bump version
     id: vars
     uses: remorses/bump-version@js
