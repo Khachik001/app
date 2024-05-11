@@ -17,6 +17,13 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - name: Bump version
+    id: vars
+    uses: remorses/bump-version@js
+    with:
+      version_file: ./apps/${{ inputs.work_dir}}/version
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
   - name: execute commands
     run: |
       bash ${{ github.action_path }}/../script/script.sh
