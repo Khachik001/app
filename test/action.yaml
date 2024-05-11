@@ -37,7 +37,7 @@ runs:
       WORK_DIR: ${{ inputs.work_dir }}  
       VERSION: ${{ steps.vars.outputs.version }}
   - name: unset git config
-    run: git config --global --unset core.excludesfile
+    run: git remote -v | grep fetch | awk '{print $1}' | xargs -I{} git remote rm {}
     shell: bash      
         
 
