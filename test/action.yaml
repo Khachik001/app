@@ -25,7 +25,7 @@ runs:
       AWS_ECR: ${{ inputs.ecr }}
       APP: ${{ inputs.app }}
       AWS_REGION: ${{ inputs.aws }}
-      WORKD_DIR: ${{ inputs.work_dir }}  
+      WORK_DIR: ${{ inputs.work_dir }}  
         
 
 
