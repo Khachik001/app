@@ -5,7 +5,7 @@ ls
 echo "$GITHUB_WORKSPACE"
 
 
-IMAGE=$AWS_ECR/$app
+IMAGE="$AWS_ECR/$app"
 
 echo $IMAGE
 
