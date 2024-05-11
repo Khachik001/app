@@ -19,9 +19,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: unset git config
-    run: git config --global --unset core.excludesfile
-    shell: bash
   - name: Bump version
     id: vars
     uses: remorses/bump-version@js
@@ -39,6 +36,9 @@ runs:
       AWS_REGION: ${{ inputs.aws }}
       WORK_DIR: ${{ inputs.work_dir }}  
       VERSION: ${{ steps.vars.outputs.version }}
+  - name: unset git config
+    run: git config --global --unset core.excludesfile
+    shell: bash      
         
 
 
