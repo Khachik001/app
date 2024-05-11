@@ -13,7 +13,9 @@ inputs:
   work_dir:
     description: working directory
     required: true
-
+  token:
+    description: github token
+    required: true
 runs:
   using: "composite"
   steps:
@@ -23,7 +25,7 @@ runs:
     with:
       version_file: ${{ inputs.work_dir}}/version
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+      GITHUB_TOKEN: ${{ inputs.token }}  
   - name: execute commands
     run: |
       bash ${{ github.action_path }}/../script/script.sh
