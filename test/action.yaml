@@ -35,6 +35,7 @@ runs:
       APP: ${{ inputs.app }}
       AWS_REGION: ${{ inputs.aws }}
       WORK_DIR: ${{ inputs.work_dir }}  
+      VERSION: ${{ steps.vars.outputs.version }}
         
 
 

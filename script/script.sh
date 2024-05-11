@@ -5,4 +5,4 @@ ls
 echo "$GITHUB_WORKSPACE"
 ls $GITHUB_WORKSPACE/$WORK_DIR
 
-echo "${{ steps.vars.outputs.version }}"
+echo "$VERSION"
